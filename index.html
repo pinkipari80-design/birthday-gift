@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Ansh ♡</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050b20;
+    color: white;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: .2; transform: scale(.7); }
+    to { opacity: 1; transform: scale(1.3); }
+}
+
+.moon {
+    position: fixed;
+    top: 35px;
+    right: 9%;
+    font-size: 65px;
+    color: #ffeab0;
+    filter: drop-shadow(0 0 25px #fff0a0);
+    animation: float 4s infinite ease-in-out;
+    z-index: 2;
+}
+
+@keyframes float {
+    50% { transform: translateY(-15px); }
+}
+
+section {
+    min-height: 100vh;
+    padding: 90px 20px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: clamp(42px, 8vw, 78px);
+    color: #f6dca2;
+    text-shadow: 0 0 25px #b8a4ff;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: clamp(27px, 5vw, 38px);
+    color: #f5dba8;
+    margin-bottom: 25px;
+}
+
+p {
+    line-height: 1.9;
+    font-size: 18px;
+    max-width: 650px;
+    color: #d9dcef;
+}
+
+.small {
+    color: #c7b9ee;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 14px 30px;
+    border: 1px solid #f3d9a2;
+    border-radius: 30px;
+    background: rgba(255,255,255,.08);
+    color: #ffe9b9;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: .3s;
+}
+
+button:hover {
+    background: #f3d9a2;
+    color: #071027;
+    box-shadow: 0 0 25px #f3d9a2;
+    transform: translateY(-3px);
+}
+
+.card {
+    max-width: 700px;
+    width: 100%;
+    padding: 35px;
+    border: 1px solid rgba(245,220,170,.4);
+    border-radius: 20px;
+    background: rgba(255,255,255,.055);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 35px rgba(130,110,200,.15);
+    margin-top: 20px;
+}
+
+.photo {
+    width: min(310px, 85vw);
+    height: 390px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 2px solid #e9d5a1;
+    box-shadow: 0 0 35px #8b79c9;
+    margin: 25px;
+}
+
+.gift {
+    font-size: 110px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-15px); }
+}
+
+.cake {
+    font-size: 105px;
+    margin: 25px;
+    cursor: pointer;
+    animation: float 3s infinite;
+}
+
+.letter {
+    text-align: left;
+    white-space: pre-line;
+    font-size: 17px;
+    line-height: 2;
+    color: #e3e0f4;
+}
+
+.hidden {
+    display: none;
+}
+
+.reveal {
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.music {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10;
+    margin: 0;
+    background: #172449;
+}
+
+footer {
+    padding: 40px 20px;
+    color: #b7b4d2;
+    position: relative;
+    z-index: 1;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div class="moon">☾</div>
+
+<!-- YOUR SONG -->
+<audio id="song" loop preload="auto">
+    <source src="your-song.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music" onclick="toggleMusic()" id="musicBtn">
+    ♫ Play our song
+</button>
+
+<!-- INTRODUCTION -->
+<section>
+    <div class="small">A little surprise for someone special</div>
+
+    <h1>Happy Birthday,<br>Ansh ♡</h1>
+
+    <p>
+        Somewhere between childhood memories and all
+        the unexpected turns of life, you became
+        someone worth celebrating.
+    </p>
+
+    <button onclick="goTo('gift')">
+        Open your surprise ↓
+    </button>
+</section>
+
+<!-- GIFT BOX -->
+<section id="gift">
+
+    <div class="small">Something is waiting for you</div>
+
+    <h2>Open your little present 🎁</h2>
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <div id="giftMessage" class="hidden card reveal">
+
+        <h2>Surprise, Ansh! ✨</h2>
+
+        <p>
+            If I could wrap up all the beautiful memories,
+            silly moments and little reasons to smile,
+            I'd put them all in this box for you.
+
+            But for now, here's a little corner of the
+            internet made just for you.
+        </p>
+
+    </div>
+</section>
+
+<!-- PHOTOGRAPH -->
+<section>
+
+    <div class="small">A moment worth keeping</div>
+
+    <h2>One photograph, a thousand thoughts.</h2>
+
+    <img
+        src="ansh.jpg.jpeg"
+        class="photo"
+        alt="A special photograph of Ansh"
+    >
+
+    <p>
+        Some people become memories.
+        Some become stories.
+
+        And some remain a beautiful little
+        part of your journey.
+    </p>
+
+</section>
+
+<!-- BIRTHDAY CAKE -->
+<section>
+
+    <div class="small">Make a birthday wish</div>
+
+    <h2>A cake just for you 🎂</h2>
+
+    <div class="cake" onclick="birthdayWish()">🎂</div>
+
+    <p id="cakeMessage">
+        Tap the cake to make your birthday wish!
+    </p>
+
+</section>
+
+<!-- PERSONAL LETTER -->
+<section>
+
+    <div class="small">Something from my heart</div>
+
+    <h2>A little birthday letter 💌</h2>
+
+    <div class="card">
+
+        <div class="letter">
+Dear Ansh,
+
+It's funny how life works, isn't it?
+
+We go back to being those little kids who knew
+almost nothing about life, yet somehow created
+a memory that stayed.
+
+Who knew that the person from those childhood
+days would become someone I'd be making a
+whole birthday website for?
+
+I hope this new year of your life brings you
+everything you've quietly wished for.
+
+I hope you find reasons to laugh on difficult
+days, courage when things get uncertain,
+and happiness in the smallest moments.
+
+Never stop being yourself. Keep dreaming,
+keep growing, and never let the world take
+away that little spark in you.
+
+And no matter how busy life gets, I hope
+you always have beautiful reasons to smile.
+
+Happy Birthday, my coffee. ☕
+
+With lots of wishes and a little madness,
+
+Your Rasmalai ♡
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SECRET MESSAGE -->
+<section>
+
+    <div class="small">One last little secret</div>
+
+    <h2>There's something you haven't discovered...</h2>
+
+    <button onclick="revealSecret()">
+        Unlock your secret message ♡
+    </button>
+
+    <div id="secret" class="hidden card reveal">
+
+        <h2>Hey, birthday boy!</h2>
+
+        <p>
+            If childhood had a way of sending us
+            little surprises, perhaps you're one of mine.
+
+            Here's to old memories, new beginnings,
+            unexpected conversations and countless
+            reasons to smile.
+
+            Don't forget to save some cake for your
+            favourite Rasmalai! ♡
+        </p>
+
+    </div>
+
+</section>
+
+<footer>
+
+    Made with a little stardust, lots of memories
+    and a whole lot of affection. 🌙
+
+    <br><br>
+
+    Happy Birthday, Ansh. ♡
+
+</footer>
+
+<script>
+
+// GENERATE ANIMATED STARS
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 150; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    const size = Math.random() * 3 + 1;
+
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+    stars.appendChild(star);
+
+}
+
+// NAVIGATION
+
+function goTo(id) {
+
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+// MUSIC PLAYER
+
+const song = document.getElementById("song");
+
+function toggleMusic() {
+
+    const btn = document.getElementById("musicBtn");
+
+    if (song.paused) {
+
+        song.play().then(() => {
+
+            btn.innerHTML = "♫ Pause our song";
+
+        }).catch(() => {
+
+            btn.innerHTML = "Tap to play ♫";
+
+        });
+
+    } else {
+
+        song.pause();
+
+        btn.innerHTML = "♫ Play our song";
+
+    }
+
+}
+
+// OPEN GIFT
+
+function openGift() {
+
+    const gift = document.querySelector(".gift");
+
+    gift.innerHTML = "✨💝✨";
+
+    document.getElementById("giftMessage")
+        .classList.remove("hidden");
+
+}
+
+// BIRTHDAY WISH
+
+function birthdayWish() {
+
+    document.getElementById("cakeMessage").innerHTML =
+        "✨ May all your beautiful wishes find their way to you. Happy Birthday, Ansh! ♡";
+
+}
+
+// SECRET MESSAGE
+
+function revealSecret() {
+
+    document.getElementById("secret")
+        .classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
